@@ -1,8 +1,5 @@
-(defpackage :com.gigamonkeys.test-system (:use :asdf :cl))
-(in-package :com.gigamonkeys.test-system)
-
-(defsystem test-framework
-  :name "test-framework"
+(defsystem pcl-test-framework
+  :name "pcl-test-framework"
   :author "Peter Seibel <peter@gigamonkeys.com>"
   :version "1.0"
   :maintainer "Peter Seibel <peter@gigamonkeys.com>"
@@ -12,4 +9,4 @@
   :components
   ((:file "packages")
    (:file "test" :depends-on ("packages")))
-  :depends-on (:macro-utilities))
+  :depends-on (:pcl-macro-utilities))

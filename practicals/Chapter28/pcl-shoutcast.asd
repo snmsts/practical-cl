@@ -1,10 +1,5 @@
-(defpackage :com.gigamonkeys.shoutcast-system (:use :asdf :cl))
-(in-package :com.gigamonkeys.shoutcast-system)
-
-(require :aserve)
-
-(defsystem shoutcast
-  :name "shoutcast"
+(defsystem pcl-shoutcast
+  :name "pcl-shoutcast"
   :author "Peter Seibel <peter@gigamonkeys.com>"
   :version "0.1"
   :maintainer "Peter Seibel <peter@gigamonkeys.com>"
@@ -15,6 +10,4 @@
   ((:file "packages")
    (:file "song-source" :depends-on ("packages"))
    (:file "shoutcast" :depends-on ("packages")))
-  :depends-on (:html :pathnames :macro-utilities :id3v2 :mp3-database :url-function))
-
-        
+  :depends-on (:pcl-html :pcl-pathnames :pcl-macro-utilities :pcl-id3v2 :pcl-mp3-database :pcl-url-function))

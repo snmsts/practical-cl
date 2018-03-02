@@ -26,20 +26,20 @@
    (shuffle      :accessor shuffle      :initform :none)
    (repeat       :accessor repeat       :initform :none)
    (user-agent   :accessor user-agent   :initform "Unknown")
-   (lock         :reader   lock         :initform (make-process-lock))))
+   (lock         :reader   lock         :initform (make-lock))))
 
 (defun make-playlist-table ()
   (make-instance 'table :schema *mp3-schema*))
 
 (defmacro with-playlist-locked ((playlist) &body body)
-  `(with-process-lock ((lock ,playlist))
+  `(with-lock-held ((lock ,playlist))
      ,@body))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; find-song-source
 
 (defvar *playlists* (make-hash-table :test #'equal))
-(defparameter *playlists-lock* (make-process-lock :name "playlists-lock"))
+(defparameter *playlists-lock* (make-lock "playlists-lock"))
 
 (defmethod find-song-source ((type (eql 'playlist)) request)
   (let ((playlist (lookup-playlist (playlist-id request))))
@@ -49,7 +49,7 @@
     playlist))
 
 (defun lookup-playlist (id)
-  (with-process-lock (*playlists-lock*)
+  (with-lock-held (*playlists-lock*)
     (or (gethash id *playlists*)
         (setf (gethash id *playlists*) (make-instance 'playlist :id id)))))
 

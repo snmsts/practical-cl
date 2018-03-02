@@ -1,10 +1,5 @@
-(defpackage :com.gigamonkeys.url-function-system (:use :asdf :cl))
-(in-package :com.gigamonkeys.url-function-system)
-
-(require :aserve)
-
-(defsystem url-function
-  :name "url-function"
+(defsystem pcl-url-function
+  :name "pcl-url-function"
   :author "Peter Seibel <peter@gigamonkeys.com>"
   :version "0.1"
   :maintainer "Peter Seibel <peter@gigamonkeys.com>"
@@ -14,6 +9,4 @@
   :components
   ((:file "packages")
    (:file "html-infrastructure" :depends-on ("packages")))
-  :depends-on (:html :macro-utilities))
-
-        
+  :depends-on (:pcl-html :pcl-macro-utilities :aserve))

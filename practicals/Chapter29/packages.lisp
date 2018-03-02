@@ -11,9 +11,9 @@
   (:import-from :acl-socket
                 :ipaddr-to-dotted 
                 :remote-host)
-  (:import-from :multiprocessing
-                :make-process-lock
-                :with-process-lock)
+  (:import-from :bordeaux-threads
+                :make-lock
+                :with-lock-held)
   (:export :start-mp3-browser))
                 
 

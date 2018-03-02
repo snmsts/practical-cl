@@ -174,7 +174,7 @@
    (:title "All Playlists")
    ((:table :class "all-playlists")
     (:table-row "Playlist" "# Songs" "Most recent user agent")
-    (with-process-lock (*playlists-lock*)
+    (with-lock-held (*playlists-lock*)
       (loop for playlist being the hash-values of *playlists* do
            (html
              (:table-row

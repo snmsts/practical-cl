@@ -1,8 +1,5 @@
-(defpackage :com.gigamonkeys.html-system (:use :asdf :cl))
-(in-package :com.gigamonkeys.html-system)
-
-(defsystem html
-  :name "html"
+(defsystem pcl-html
+  :name "pcl-html"
   :author "Peter Seibel <peter@gigamonkeys.com>"
   :version "1.0"
   :maintainer "Peter Seibel <peter@gigamonkeys.com>"
@@ -13,5 +10,5 @@
   ((:file "packages")
    (:file "html" :depends-on ("packages"))
    (:file "css" :depends-on ("packages" "html")))
-  :depends-on (:macro-utilities))
+  :depends-on (:pcl-macro-utilities))
 

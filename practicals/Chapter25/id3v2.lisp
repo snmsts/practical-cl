@@ -356,8 +356,9 @@
    (string-equal "mp3" (pathname-type file))))
 
 (defun id3-p (file)
-  (with-open-file (in file)
-    (string= "ID3" (read-value 'iso-8859-1-string in :length 3))))
+  (when file
+    (with-open-file (in file)
+      (string= "ID3" (read-value 'iso-8859-1-string in :length 3)))))
 
 (defun read-id3 (file)
   (with-open-file (in file :element-type '(unsigned-byte 8))
