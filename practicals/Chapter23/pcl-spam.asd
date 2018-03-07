@@ -9,4 +9,4 @@
   :components
   ((:file "packages")
    (:file "spam" :depends-on ("packages")))
-  :depends-on (:cl-ppcre :pcl-pathnames))
+  :depends-on (:cl-ppcre :pcl-pathnames :pcl-test-framework))
